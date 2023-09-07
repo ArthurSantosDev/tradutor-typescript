@@ -1,0 +1,36 @@
+// Declaração de variáveis globais
+$bg-light-mode: #fbf8f8;
+$bg-dark-mode: #050506;
+$text-light-mode: #000;
+$text-dark-mode: #fff;
+
+$text-size: 1em;
+$heading-size: 1.8em;
+
+// Mixins
+
+@mixin light-mode {
+    background-color: $bg-light-mode;
+    color: $text-light-mode;
+}
+
+@mixin dark-mode {
+    background-color: $bg-dark-mode;
+    color: $text-dark-mode;
+}
+
+@mixin set-small-font {
+    font-size: small;
+}
+
+@mixin set-large-font {
+    font-size: large;
+}
+
+@mixin set-very-large-font {
+    font-size: x-large;
+}
+
+@mixin set-medium-font {
+    font-size: medium;
+}

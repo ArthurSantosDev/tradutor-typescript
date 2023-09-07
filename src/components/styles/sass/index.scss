@@ -1,0 +1,109 @@
+@import './abstract/imports.scss';
+
+body {
+    @include set-medium-font();
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+    }
+}
+
+body.light-mode {
+    @include light-mode();
+}
+body.dark-mode {
+    @include dark-mode();
+}
+
+body.dark-mode > .user-settings {
+    background-color: #0c0c1c;
+}
+
+body.light-mode > .user-settings {
+    background-color: #e8e8fd;
+}
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+
+    padding: 2em 5em 2em 1em;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1em;
+        justify-content: space-around;
+    }
+}
+
+img#user-pfp {
+    width: 8em;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1.5em;
+
+    @media screen and (max-width: 768px) {
+        width: 6em;
+    }
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+.user-info > p {
+    color: #808080;
+    font-size: $text-size + .5em;
+}
+
+span#username {
+    font-weight: bold;
+    font-size: $text-size + .8em;
+}
+
+body.dark-mode span#username {
+    color: #f5f5f5;
+}
+body.light-mode span#username {
+    color: #141414;
+}
+
+/* Navbar */
+nav#user-menu > ul {
+    display: flex;
+    flex-direction: column;
+    gap: .7em;
+}
+
+nav#user-menu > ul > li {
+    display: flex;
+    gap: .6em;
+    font-size: $text-size;
+}
+
+nav#user-menu > h4 {
+    font-size: $text-size;
+    margin-bottom: 20px;
+}
+
+.user-settings {
+    height: 100%;
+    width: 70%;
+    margin: 1.5em;
+
+    @media screen and (max-width: 768px) {
+        width: 90%;
+    }
+}

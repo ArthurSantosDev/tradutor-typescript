@@ -6,13 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Links-->
     <link rel="stylesheet" href="./src/components/styles/css/index.css" type="text/css">
+    <!--Link FontAwesome-->
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" 
+    />
 
     <!--Scripts-->
     <script type="module" src="./src/components/scripts/js/localStorage.js"></script>
 
     <title>Personalização de Interface</title>
 </head>
-<body>
+<body class="light-mode">
+    <header class="page-header">
+        <div class="user-info">
+            <img src="./src/assets/imgs/defalt_pfp.png" id="user-pfp" alt="Foto de perfil do usuário - Personalizável">
+            <p>
+                É bom te ver, <br>
+                <span id="username">Retr0</span>
+            </p>
+        </div>
+
+        <nav id="user-menu">
+            <h4>Configurações</h4>
+
+            <ul>
+                <li>
+                    <i class="fa-regular fa-user"></i>
+                    Conta
+                </li>
+                <li>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Preferências
+                </li>
+                <li>
+                    <i class="fa-regular fa-eye"></i>
+                    Acessibilidade
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="user-settings selected">
+        <h1>Olá</h1>
+    </section>
     
     <!--Scripts-->
     <script type="module" src="./src/components/scripts/js/index.js"></script>
