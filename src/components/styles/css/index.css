@@ -6,12 +6,15 @@
   border: none;
   font-family: Arial, Helvetica, sans-serif;
   list-style-type: none;
+  color: inherit;
+  text-decoration: none;
+  resize: none;
 }
 * :focus {
   outline: 0;
 }
 
-body {
+body * {
   font-size: medium;
 }
 @media screen and (min-width: 768px) {
@@ -39,12 +42,11 @@ body.light-mode > .user-settings {
 }
 
 .page-header {
+  width: 20em;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   gap: 1.5em;
-  padding: 2em 5em 2em 1em;
+  padding: 2em 1em;
 }
 @media screen and (max-width: 768px) {
   .page-header {
@@ -71,18 +73,37 @@ img#user-pfp {
 .user-info {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 1.5em;
   justify-content: center;
 }
 @media screen and (max-width: 768px) {
   .user-info {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
 .user-info > p {
   color: #808080;
   font-size: 1.5em;
+}
+
+.user-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.user-bio h4 {
+  font-size: 1em;
+}
+@media screen and (max-width: 768px) {
+  .user-bio h4 {
+    text-align: center;
+  }
+}
+
+p#bio {
+  font-size: 0.9em;
 }
 
 span#username {
@@ -99,16 +120,25 @@ body.light-mode span#username {
 }
 
 /* Navbar */
+nav#user-menu {
+  width: 100%;
+  border-top: 1px solid #808080;
+  padding-top: 1em;
+  margin-top: 0.5em;
+}
+@media screen and (max-width: 768px) {
+  nav#user-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 nav#user-menu > ul {
   display: flex;
   flex-direction: column;
   gap: 0.7em;
-}
-
-nav#user-menu > ul > li {
-  display: flex;
-  gap: 0.6em;
-  font-size: 1em;
 }
 
 nav#user-menu > h4 {
@@ -116,15 +146,79 @@ nav#user-menu > h4 {
   margin-bottom: 20px;
 }
 
+.menu-link {
+  display: flex;
+  gap: 0.6em;
+  font-size: 1em;
+  transition: 0.5s ease;
+}
+
+.menu-link:hover {
+  color: #808080;
+}
+
+/* Section */
 .user-settings {
-  height: 100%;
-  width: 70%;
+  height: 100vh;
+  width: 80%;
   margin: 1.5em;
+  padding: 1em;
+  display: none;
+  flex-direction: column;
 }
 @media screen and (max-width: 768px) {
   .user-settings {
-    width: 90%;
+    width: 100%;
+    margin: 0;
   }
+}
+.user-settings h2 {
+  font-size: 2.6em;
+}
+.user-settings fieldset {
+  width: 80%;
+  min-height: 50vh;
+  padding: 1em;
+  margin: 2em auto;
+  border: 1px solid #808080;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.user-settings fieldset legend {
+  font-size: 1.4em;
+}
+
+.user-settings.selected {
+  display: flex;
+}
+
+/* Inputs */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+input, textarea {
+  background: none;
+  padding: 5px;
+}
+
+textarea {
+  border: 2px solid #808080;
+  border-radius: 5px;
+}
+
+input[type=text] {
+  border-bottom: 2px solid #808080;
 }
 
 /*# sourceMappingURL=index.css.map */

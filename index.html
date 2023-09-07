@@ -20,7 +20,7 @@
 
     <title>Personalização de Interface</title>
 </head>
-<body class="light-mode">
+<body class="dark-mode">
     <header class="page-header">
         <div class="user-info">
             <img src="./src/assets/imgs/defalt_pfp.png" id="user-pfp" alt="Foto de perfil do usuário - Personalizável">
@@ -28,30 +28,83 @@
                 É bom te ver, <br>
                 <span id="username">Retr0</span>
             </p>
+
+            <div class="user-bio">
+                <h4>Sobre</h4>
+                <p id="bio">
+                    Estudante de Informática Para Internet, entusiasta de tecnologia e
+                    de videogames. Com experiência em HTML5, CSS3/SASS e JavaScript/TypeScript,
+                    pretendo me tornar um desenvolvedor front-end :)
+                </p>
+            </div>
         </div>
+
+        <hr>
 
         <nav id="user-menu">
             <h4>Configurações</h4>
 
             <ul>
                 <li>
-                    <i class="fa-regular fa-user"></i>
-                    Conta
+                    <a class="menu-link" href="#">
+                        <i class="fa-regular fa-user"></i>
+                        Meu perfil
+                    </a>
                 </li>
                 <li>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    Preferências
+                    <a class="menu-link" href="#">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Preferências
+                    </a>
                 </li>
                 <li>
-                    <i class="fa-regular fa-eye"></i>
-                    Acessibilidade
+                    <a class="menu-link" href="#">
+                        <i class="fa-regular fa-eye"></i>
+                        Acessibilidade
+                    </a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <section class="user-settings selected">
-        <h1>Olá</h1>
+        <h2>Meu Perfil</h2>
+
+        <fieldset>
+            <legend>Visão geral</legend>
+
+            <div class="user-inputs">
+                <div class="input-container">
+                    <label for="input-username">
+                        <p>Nome de usuário:</p>
+                    </label>
+                    <input type="text" id="input-username" name="username">
+                </div>
+
+                <div class="input-container">
+                    <label for="pfp">
+                        <p>Foto de perfil:</p>
+                    </label>
+                    <input type="file" name="pfp" id="pfp">
+                    <div id="show-img"></div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <label for="input-bio">
+                    <p>Bio:</p>
+                </label>
+                <textarea name="bio" id="input-bio" cols="30" rows="10"></textarea>
+            </div>
+        </fieldset>
+    </section>
+
+    <section class="user-settings">
+        <h2>Preferências</h2>
+    </section>
+
+    <section class="user-settings">
+        <h2>Acessibilidade</h2>
     </section>
     
     <!--Scripts-->
