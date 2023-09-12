@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -14,12 +15,101 @@
   outline: 0;
 }
 
+.switch {
+  overflow-y: hidden;
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+.toggle {
+  display: none;
+}
+
+.switch-label {
+  overflow-y: hidden;
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background-color: #b7f5b8;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.toggle:checked + .switch-label {
+  background-color: #5ee262;
+}
+
+.toggle:checked + .switch-label::before {
+  transform: translateX(30px);
+}
+
+.toggle:checked + .switch-label::before {
+  background-color: #050506;
+}
+
+.toggle + .switch-label::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6078431373);
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.switch-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  padding: 0 6px; /* Ajuste o espaçamento conforme necessário */
+  font-size: 20px; /* Tamanho da fonte dos emojis */
+  color: #fff; /* Cor padrão dos emojis */
+  transition: color 0.3s ease-in-out;
+}
+
+.switch-sun,
+.switch-moon {
+  transition: transform 0.3s ease-in-out;
+  display: block;
+}
+
+.switch-moon {
+  color: #050506;
+}
+
+.switch-sun {
+  color: #f5f5f5;
+}
+
+.toggle:checked + .switch-label .switch-sun {
+  transform: translateX(30px);
+  display: block;
+}
+
+.toggle:checked + .switch-label .switch-moon {
+  transform: translateX(0);
+  display: none;
+}
+
 body * {
-  font-size: medium;
+  font-size: large;
 }
 @media screen and (min-width: 768px) {
   body {
     display: flex;
+    font-size: medium;
+  }
+}
+@media screen and (min-width: 468px) {
+  body {
+    font-size: small;
   }
 }
 
@@ -33,16 +123,16 @@ body.dark-mode {
   color: #fff;
 }
 
-body.dark-mode > .user-settings {
+body.dark-mode > main > .music-section {
   background-color: #0c0c1c;
 }
 
-body.light-mode > .user-settings {
-  background-color: #e8e8fd;
+body.light-mode > main > .music-section {
+  background-color: #f5f5fb;
 }
 
 .page-header {
-  width: 20em;
+  width: 14em;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
@@ -88,24 +178,6 @@ img#user-pfp {
   font-size: 1.5em;
 }
 
-.user-bio {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-.user-bio h4 {
-  font-size: 1em;
-}
-@media screen and (max-width: 768px) {
-  .user-bio h4 {
-    text-align: center;
-  }
-}
-
-p#bio {
-  font-size: 0.9em;
-}
-
 span#username {
   font-weight: bold;
   font-size: 1.8em;
@@ -148,9 +220,12 @@ nav#user-menu > h4 {
 
 .menu-link {
   display: flex;
-  gap: 0.6em;
+  gap: 1em;
   font-size: 1em;
   transition: 0.5s ease;
+}
+.menu-link i {
+  padding-top: 2px;
 }
 
 .menu-link:hover {
@@ -158,24 +233,29 @@ nav#user-menu > h4 {
 }
 
 /* Section */
-.user-settings {
-  height: 100vh;
-  width: 80%;
+main {
+  width: 75%;
+}
+
+.music-section {
+  min-height: 100vh;
+  width: 100%;
   margin: 1.5em;
   padding: 1em;
-  display: none;
+  display: flex;
   flex-direction: column;
+  border-radius: 1em;
 }
 @media screen and (max-width: 768px) {
-  .user-settings {
+  .music-section {
     width: 100%;
     margin: 0;
   }
 }
-.user-settings h2 {
+.music-section h2 {
   font-size: 2.6em;
 }
-.user-settings fieldset {
+.music-section fieldset {
   width: 80%;
   min-height: 50vh;
   padding: 1em;
@@ -186,12 +266,8 @@ nav#user-menu > h4 {
   flex-direction: column;
   gap: 10px;
 }
-.user-settings fieldset legend {
+.music-section fieldset legend {
   font-size: 1.4em;
-}
-
-.user-settings.selected {
-  display: flex;
 }
 
 /* Inputs */

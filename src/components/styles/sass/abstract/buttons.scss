@@ -1,0 +1,87 @@
+$switch-width: 60px;
+$switch-height: 30px;
+$switch-border-radius: $switch-height / 2;
+$switch-background-off: #b7f5b8;
+$switch-background-on: #5ee262;
+
+.switch {
+    overflow-y: hidden;
+    position: relative;
+    width: $switch-width;
+    height: $switch-height;
+}
+
+.toggle {
+    display: none;
+}
+
+.switch-label {
+    overflow-y: hidden;
+    position: absolute;
+    width: $switch-width;
+    height: $switch-height;
+    background-color: $switch-background-off;
+    border-radius: $switch-border-radius;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.toggle:checked + .switch-label {
+    background-color: $switch-background-on;
+}
+
+.toggle:checked + .switch-label::before {
+    transform: translateX($switch-width - $switch-height);
+}
+
+.toggle:checked + .switch-label::before {
+  background-color: #050506;
+}
+
+.toggle + .switch-label::before {
+  content: '';
+  position: absolute;
+  width: $switch-height;
+  height: $switch-height + 2px;
+  background-color: #fff;
+  box-shadow: 2px 2px 4px #0000009b;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.switch-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  padding: 0 6px; /* Ajuste o espaçamento conforme necessário */
+  font-size: 20px; /* Tamanho da fonte dos emojis */
+  color: #fff; /* Cor padrão dos emojis */
+  transition: color 0.3s ease-in-out;
+}
+  
+.switch-sun,
+.switch-moon {
+  transition: transform 0.3s ease-in-out;
+  display: block;
+}
+
+.switch-moon {
+  color: #050506;
+}
+.switch-sun {
+  color: #f5f5f5;
+}
+  
+.toggle:checked + .switch-label .switch-sun {
+  transform: translateX(30px); 
+  display: block;
+}
+  
+.toggle:checked + .switch-label .switch-moon {
+  transform: translateX(0);
+  display: none;
+}

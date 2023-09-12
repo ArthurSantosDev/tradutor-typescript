@@ -2,11 +2,16 @@
 
 body {
     * {
-        @include set-medium-font();
+        @include set-large-font();
     }
 
     @media screen and (min-width: 768px) {
         display: flex;
+        @include set-medium-font();
+    }
+
+    @media screen and (min-width: 468px) {
+        @include set-small-font();
     }
 }
 
@@ -17,16 +22,16 @@ body.dark-mode {
     @include dark-mode();
 }
 
-body.dark-mode > .user-settings {
+body.dark-mode > main > .music-section {
     background-color: #0c0c1c;
 }
 
-body.light-mode > .user-settings {
-    background-color: #e8e8fd;
+body.light-mode > main > .music-section {
+    background-color: #f5f5fb;
 }
 
 .page-header {
-    width: 20em;
+    width: 14em;
 
     display: flex;
     flex-direction: column;
@@ -71,23 +76,6 @@ img#user-pfp {
     font-size: $text-size + .5em;
 }
 
-.user-bio {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-
-    h4 {
-        font-size: $text-size;
-        @media screen and (max-width: 768px) {
-            text-align: center;
-        }
-    }
-}
-
-p#bio {
-    font-size: $text-size - .1em;
-}
-
 span#username {
     font-weight: bold;
     font-size: $text-size + .8em;
@@ -129,9 +117,13 @@ nav#user-menu > h4 {
 
 .menu-link {
     display: flex;
-    gap: .6em;
+    gap: 1em;
     font-size: $text-size;
     transition: .5s ease;
+
+    i {
+        padding-top: 2px;
+    }
 }
 .menu-link:hover {
     color: #808080;
@@ -139,16 +131,21 @@ nav#user-menu > h4 {
 
 /* Section */
 
-.user-settings {
-    height: 100vh;
-    width: 80%;
+main {
+    width: 75%;
+}
+
+.music-section {
+    min-height: 100vh;
+    width: 100%;
 
     margin: 1.5em;
     padding: 1em;
 
-    display: none;
-
+    display: flex;
     flex-direction: column;
+
+    border-radius: 1em;
 
     @media screen and (max-width: 768px) {
         width: 100%;
@@ -177,10 +174,6 @@ nav#user-menu > h4 {
             font-size: $heading-size - .4em;
         }
     }
-}
-
-.user-settings.selected {
-    display: flex;
 }
 
 /* Inputs */
