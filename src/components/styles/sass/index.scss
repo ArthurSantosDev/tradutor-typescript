@@ -22,11 +22,11 @@ body.dark-mode {
     @include dark-mode();
 }
 
-body.dark-mode > main > .music-section {
+body.dark-mode > main > .translation-section {
     background-color: #0c0c1c;
 }
 
-body.light-mode > main > .music-section {
+body.light-mode > main > .translation-section {
     background-color: #f5f5fb;
 }
 
@@ -141,7 +141,7 @@ main {
     width: 100%;
 }
 
-.music-section {
+.translation-section {
     min-height: 100vh;
     width: 90%;
 

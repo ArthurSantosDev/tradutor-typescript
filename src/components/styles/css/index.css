@@ -160,11 +160,11 @@ body.dark-mode {
   color: #fff;
 }
 
-body.dark-mode > main > .music-section {
+body.dark-mode > main > .translation-section {
   background-color: #0c0c1c;
 }
 
-body.light-mode > main > .music-section {
+body.light-mode > main > .translation-section {
   background-color: #f5f5fb;
 }
 
@@ -281,7 +281,7 @@ main {
   width: 100%;
 }
 
-.music-section {
+.translation-section {
   min-height: 100vh;
   width: 90%;
   margin: 1.5em;
@@ -291,15 +291,15 @@ main {
   border-radius: 1em;
 }
 @media screen and (max-width: 768px) {
-  .music-section {
+  .translation-section {
     width: 100%;
     margin: 0;
   }
 }
-.music-section h1 {
+.translation-section h1 {
   font-size: 2.6em;
 }
-.music-section fieldset {
+.translation-section fieldset {
   width: 80%;
   min-height: 50vh;
   padding: 1em;
@@ -310,7 +310,7 @@ main {
   flex-direction: column;
   gap: 10px;
 }
-.music-section fieldset legend {
+.translation-section fieldset legend {
   font-size: 1.4em;
 }
 
