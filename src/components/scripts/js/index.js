@@ -8,8 +8,9 @@ import { getTranslation, loadLocalStorage, setBodyTheme } from "./models/models.
         const form_translation = {
             'from_lang': document.querySelector('#from_lang').value,
             'to_lang': document.querySelector('#to_lang').value,
-            'word': document.querySelector('#word').value
+            'word': document.querySelector('#word').value.replace(' ', '%')
         };
+        alert(form_translation.word)
         getTranslation(form_translation);
     });
 })();

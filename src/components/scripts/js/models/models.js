@@ -33,17 +33,22 @@ function closeModal() {
     document.getElementById('modal-alert').style.display = 'none';
 }
 export function getTranslation(translation) {
-    var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
-        const url_api = `https://glosbe.com/gapi/translate?from=${translation.from_lang}&dest=${translation.to_lang}&phrase=${translation.word}`;
+        const url_api = `https://translation-api4.p.rapidapi.com/translation?from=${translation.from_lang}&to=${translation.to_lang}&query=${translation.word}`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+                'X-RapidAPI-Host': 'translation-api4.p.rapidapi.com'
+            }
+        };
         try {
-            const response = yield fetch(url_api);
+            const response = yield fetch(url_api, options);
             console.log(response);
             if (!response.ok) {
                 throw new Error(`Erro na requisição. Status: ${response.status}`);
             }
-            const data = yield response.json();
-            const translated = ((_b = (_a = data.tuc[0]) === null || _a === void 0 ? void 0 : _a.phrase) === null || _b === void 0 ? void 0 : _b.text) || 'Tradução não encontrada.';
+            const result = yield response.text();
             const div_translation = `
             <div class="translation">
                 <h3>Tradução</h3>
@@ -51,7 +56,7 @@ export function getTranslation(translation) {
                     <li>${translation.from_lang} - ${translation.to_lang}</li>
                 </ul>
                 <p>
-                    <strong>${translation.word}:</strong> <wbr> ${translated}
+                    <strong>${translation.word}:</strong> <wbr> ${result}
                 </p>
             </div>
         `;

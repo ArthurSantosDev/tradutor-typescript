@@ -1,4 +1,4 @@
-import { Translation } from "./abstract";
+import { Options, Translation } from "./abstract";
 
 export function setBodyTheme (): void {
     const body: HTMLElement = document.body;
@@ -35,18 +35,23 @@ function closeModal (): void {
 }
 
 export async function getTranslation (translation: Translation): Promise<string | void> {
-    const url_api: string = `https://glosbe.com/gapi/translate?from=${translation.from_lang}&dest=${translation.to_lang}&phrase=${translation.word}`;
-    
+    const url_api: string = `https://translation-api4.p.rapidapi.com/translation?from=${translation.from_lang}&to=${translation.to_lang}&query=${translation.word}`;
+    const options: Options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+            'X-RapidAPI-Host': 'translation-api4.p.rapidapi.com'
+        }
+    };
     try {
-        const response: Response = await fetch(url_api);
+        const response: Response = await fetch(url_api, options);
         console.log(response)
 
         if (!response.ok) {
             throw new Error(`Erro na requisição. Status: ${response.status}`);
         }
 
-        const data: any = await response.json();
-        const translated: string = data.tuc[0]?.phrase?.text || 'Tradução não encontrada.';
+        const result: string = await response.text();
 
         const div_translation: string = `
             <div class="translation">
@@ -55,7 +60,7 @@ export async function getTranslation (translation: Translation): Promise<string 
                     <li>${translation.from_lang} - ${translation.to_lang}</li>
                 </ul>
                 <p>
-                    <strong>${translation.word}:</strong> <wbr> ${translated}
+                    <strong>${translation.word}:</strong> <wbr> ${result}
                 </p>
             </div>
         `;

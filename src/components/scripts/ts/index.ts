@@ -13,7 +13,7 @@ import { getTranslation, loadLocalStorage, setBodyTheme } from "./models/models"
         const form_translation: Translation = {
             'from_lang': (document.querySelector('#from_lang') as HTMLInputElement).value,
             'to_lang': (document.querySelector('#to_lang') as HTMLInputElement).value,
-            'word': (document.querySelector('#word') as HTMLInputElement).value
+            'word': (document.querySelector('#word') as HTMLInputElement).value.replace(' ', '%')
         }
         getTranslation(form_translation)
     });
