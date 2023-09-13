@@ -15,12 +15,9 @@
         referrerpolicy="no-referrer" 
     />
 
-    <!--Scripts-->
-    <script type="module" src="./src/components/scripts/js/localStorage.js"></script>
-
     <title>Personalização de Interface</title>
 </head>
-<body class="dark-mode">
+<body>
     <header class="page-header">
         <div class="user-info">
             <img src="./src/assets/imgs/defalt_pfp.png" id="user-pfp" alt="Foto de perfil do usuário - Personalizável">
@@ -64,14 +61,8 @@
                 </li>
                 <li>
                     <a class="menu-link" href="#">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        Procurar Música
-                    </a>
-                </li>
-                <li>
-                    <a class="menu-link" href="#">
-                        <i class="fa-solid fa-record-vinyl"></i>
-                        Álbuns
+                        <i class="fa-solid fa-gear"></i>
+                        Configurações
                     </a>
                 </li>
             </ul>
@@ -80,7 +71,39 @@
 
     <main>
         <section class="translation-section">
-            <h1>SpotSync</h1>
+            <div class="section-top">
+                <h1>Lingo<span style="color: lightgreen; text-shadow: 4px 1px #000; font-size: .5em;">Link</span></h1>
+                
+                <form>
+                    <div class="user-inputs">
+                        <div class="input-container">
+                            <label for="word">
+                                <p>
+                                    Palavra / Frase:
+                                </p>
+                            </label>
+                            <input type="text" name="word" id="word" placeholder="Ex: Abacate">
+                            
+                            <input type="button" id="translate" value="Traduzir">
+                        </div>
+                        <div class="input-container">
+                            <label for="from_lang">
+                                <p>
+                                    Traduzir de:
+                                </p>
+                            </label>
+                            <input type="text" name="lang" id="from_lang" placeholder="Ex: pt">
+
+                            <label for="to_lang">
+                                <p>
+                                    Para:
+                                </p>
+                            </label>
+                            <input type="text" name="lang" id="to_lang" placeholder="Ex: en">
+                        </div>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
     

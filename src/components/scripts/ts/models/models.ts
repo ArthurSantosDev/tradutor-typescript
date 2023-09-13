@@ -3,25 +3,43 @@ import { Translation } from "./abstract";
 export function setBodyTheme (): void {
     const body: HTMLElement = document.body;
 
+    let theme;
+
     if (body.classList.contains('dark-mode')) {
         body.classList.remove('dark-mode');
         body.classList.add('light-mode');
+
+        theme = localStorage.setItem('theme', 'light-mode');
     } else {
         body.classList.remove('light-mode');
         body.classList.add('dark-mode');
+
+        theme = localStorage.setItem('theme', 'dark-mode');
     }
+}
+
+export function loadLocalStorage () {
+    const every_selector: HTMLElement = document.querySelector('body *') as HTMLElement;
+    const toggle_switch: HTMLInputElement = document.querySelector('.toggle') as HTMLInputElement;
+
+    const theme_class: string = localStorage.getItem('theme') as string || 'dark-mode';
+
+    (theme_class === 'dark-mode') && toggle_switch.checked;
+    
+    document.body.classList.add(theme_class);
+    every_selector.classList.add(theme_class);
 }
 
 function closeModal (): void {
     document.getElementById('modal-alert')!.style.display = 'none';
 }
 
-export async function getTranslation (translation: Translation): Promise<string> {
-    const url_api: string = `https://glosbe.com/gapi/translate?from=
-    ${translation.from_lang}&dest=${translation.to_lang}&phrase=${translation.word}`;
-
+export async function getTranslation (translation: Translation): Promise<string | void> {
+    const url_api: string = `https://glosbe.com/gapi/translate?from=${translation.from_lang}&dest=${translation.to_lang}&phrase=${translation.word}`;
+    
     try {
         const response: Response = await fetch(url_api);
+        console.log(response)
 
         if (!response.ok) {
             throw new Error(`Erro na requisição. Status: ${response.status}`);
@@ -52,10 +70,10 @@ export async function getTranslation (translation: Translation): Promise<string>
                 <p>
                     ${err}
                 </p>
-                <button id="modal-btn" type="button" onclick="closeModal()">Ok</button>
+                <button id="modal-btn" type="button" onclick="closeModal();">Ok</button>
             </div>
         `;
 
-        return document.body.innerHTML = modal_error;
+        return document.body.insertAdjacentHTML('beforeend', modal_error);
     }
 }

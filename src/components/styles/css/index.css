@@ -15,6 +15,12 @@
   outline: 0;
 }
 
+::selection {
+  background-color: #90ee90;
+  color: #000;
+  text-shadow: none;
+}
+
 .switch {
   overflow-y: hidden;
   position: relative;
@@ -290,6 +296,16 @@ main {
   flex-direction: column;
   border-radius: 1em;
 }
+.translation-section .section-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 768px) {
+  .translation-section .section-top {
+    gap: 1.5em;
+  }
+}
 @media screen and (max-width: 768px) {
   .translation-section {
     width: 100%;
@@ -298,20 +314,7 @@ main {
 }
 .translation-section h1 {
   font-size: 2.6em;
-}
-.translation-section fieldset {
-  width: 80%;
-  min-height: 50vh;
-  padding: 1em;
-  margin: 2em auto;
-  border: 1px solid #808080;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.translation-section fieldset legend {
-  font-size: 1.4em;
+  padding: 3px;
 }
 
 /* Inputs */
@@ -321,24 +324,34 @@ main {
   gap: 10px;
 }
 
+label {
+  font-weight: bold;
+}
+
 .user-inputs {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
 }
 
-input, textarea {
+input {
   background: none;
   padding: 5px;
 }
 
-textarea {
-  border: 2px solid #808080;
-  border-radius: 5px;
-}
-
 input[type=text] {
   border-bottom: 2px solid #808080;
+}
+
+input[type=button] {
+  border: 2px solid #808080;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.8s;
+  margin-top: 10px;
+}
+input[type=button]:hover {
+  background-color: #808080;
 }
 
 /*# sourceMappingURL=index.css.map */
