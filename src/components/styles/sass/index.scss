@@ -172,6 +172,30 @@ main {
         font-size: $heading-size + .8em;
         padding: 3px;
     }
+
+    article {
+    margin-top: 3em;
+}
+}
+
+h3 {
+    font-size: $text-size + .6em;
+}
+
+table {
+    margin-top: 2em;
+    padding-left: 1em;
+    border-left: 2px solid #808080;
+}
+
+tr {
+    font-size: 4em;
+    display: flex;
+    gap: .8em;
+}
+td {
+    text-align: center;
+    font-weight: bold;
 }
 
 /* Inputs */

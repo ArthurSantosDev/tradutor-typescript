@@ -29,51 +29,39 @@ export function loadLocalStorage() {
     document.body.classList.add(theme_class);
     every_selector.classList.add(theme_class);
 }
-function closeModal() {
-    document.getElementById('modal-alert').style.display = 'none';
+export function closeModal() {
+    document.querySelector('.modal-alert').style.display = 'none';
 }
 export function getTranslation(translation) {
     return __awaiter(this, void 0, void 0, function* () {
-        const url_api = `https://translation-api4.p.rapidapi.com/translation?from=${translation.from_lang}&to=${translation.to_lang}&query=${translation.word}`;
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-                'X-RapidAPI-Host': 'translation-api4.p.rapidapi.com'
-            }
-        };
+        const url_api = `https://api.mymemory.translated.net/get?q=${translation.word}!&langpair=${translation.from_lang}|${translation.to_lang}`;
         try {
-            const response = yield fetch(url_api, options);
+            const response = yield fetch(url_api);
             console.log(response);
             if (!response.ok) {
                 throw new Error(`Erro na requisição. Status: ${response.status}`);
             }
-            const result = yield response.text();
-            const div_translation = `
-            <div class="translation">
-                <h3>Tradução</h3>
-                <ul>
-                    <li>${translation.from_lang} - ${translation.to_lang}</li>
-                </ul>
-                <p>
-                    <strong>${translation.word}:</strong> <wbr> ${result}
-                </p>
-            </div>
-        `;
-            const translation_section = document.querySelector('section.translation-section');
+            const result = yield response.json();
+            if (!result.responseData) {
+                throw new Error(`Insira um idioma válido. Status: ${response.status}`);
+            }
+            const div_translation = `<table>
+            <tr>
+                <td>${translation.from_lang.toLocaleUpperCase()}</td>
+                <td>${translation.to_lang.toLocaleUpperCase()}</td>
+            </tr>
+            <tr>
+                <td>${translation.word}</td>
+                <td>${result.responseData.translatedText}</td>
+            </tr>
+        </table>`;
+            const translation_section = document.querySelector('.div-translation');
             return translation_section.innerHTML = div_translation;
         }
         catch (err) {
-            const modal_error = `
-            <div class="modal-alert" id="modal">
-                <h2>Erro!</h2>
-                <p>
-                    ${err}
-                </p>
-                <button id="modal-btn" type="button" onclick="closeModal();">Ok</button>
-            </div>
-        `;
-            return document.body.insertAdjacentHTML('beforeend', modal_error);
+            const warning_error = `<p>${err}</p>`;
+            document.querySelector('.modal-alert').style.display = 'flex';
+            return document.querySelector('#modal-warning').innerHTML = warning_error;
         }
     });
 }

@@ -1,4 +1,4 @@
-import { Options, Translation } from "./abstract";
+import { Translation } from "./abstract";
 
 export function setBodyTheme (): void {
     const body: HTMLElement = document.body;
@@ -30,55 +30,44 @@ export function loadLocalStorage () {
     every_selector.classList.add(theme_class);
 }
 
-function closeModal (): void {
-    document.getElementById('modal-alert')!.style.display = 'none';
+export function closeModal (): void {
+    (document.querySelector('.modal-alert') as HTMLElement).style.display = 'none';
 }
 
 export async function getTranslation (translation: Translation): Promise<string | void> {
-    const url_api: string = `https://translation-api4.p.rapidapi.com/translation?from=${translation.from_lang}&to=${translation.to_lang}&query=${translation.word}`;
-    const options: Options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-            'X-RapidAPI-Host': 'translation-api4.p.rapidapi.com'
-        }
-    };
+    const url_api: string = `https://api.mymemory.translated.net/get?q=${translation.word}!&langpair=${translation.from_lang}|${translation.to_lang}`;
+    
     try {
-        const response: Response = await fetch(url_api, options);
+        const response: Response = await fetch(url_api);
         console.log(response)
 
         if (!response.ok) {
             throw new Error(`Erro na requisição. Status: ${response.status}`);
         }
 
-        const result: string = await response.text();
+        const result: any = await response.json();
 
-        const div_translation: string = `
-            <div class="translation">
-                <h3>Tradução</h3>
-                <ul>
-                    <li>${translation.from_lang} - ${translation.to_lang}</li>
-                </ul>
-                <p>
-                    <strong>${translation.word}:</strong> <wbr> ${result}
-                </p>
-            </div>
-        `;
+        if (!result.responseData) {
+            throw new Error(`Insira um idioma válido. Status: ${response.status}`);
+        }
 
-        const translation_section: HTMLElement = document.querySelector('section.translation-section') as HTMLElement;
+        const div_translation: string = `<table>
+            <tr>
+                <td>${translation.from_lang.toLocaleUpperCase()}</td>
+                <td>${translation.to_lang.toLocaleUpperCase()}</td>
+            </tr>
+            <tr>
+                <td>${translation.word}</td>
+                <td>${result.responseData.translatedText}</td>
+            </tr>
+        </table>`;
+
+        const translation_section: HTMLElement = document.querySelector('.div-translation') as HTMLElement;
         return translation_section.innerHTML = div_translation;
 
     } catch (err: any) {
-        const modal_error: string = `
-            <div class="modal-alert" id="modal">
-                <h2>Erro!</h2>
-                <p>
-                    ${err}
-                </p>
-                <button id="modal-btn" type="button" onclick="closeModal();">Ok</button>
-            </div>
-        `;
-
-        return document.body.insertAdjacentHTML('beforeend', modal_error);
+        const warning_error: string = `<p>${err}</p>`;
+        (document.querySelector('.modal-alert') as HTMLElement).style.display = 'flex';
+        return (document.querySelector('#modal-warning') as HTMLElement).innerHTML = warning_error;
     }
 }

@@ -1,5 +1,5 @@
 import { Translation } from "./models/abstract";
-import { getTranslation, loadLocalStorage, setBodyTheme } from "./models/models";
+import { closeModal, getTranslation, loadLocalStorage, setBodyTheme } from "./models/models";
 
 (() => {
     window.addEventListener('DOMContentLoaded', loadLocalStorage);
@@ -13,8 +13,12 @@ import { getTranslation, loadLocalStorage, setBodyTheme } from "./models/models"
         const form_translation: Translation = {
             'from_lang': (document.querySelector('#from_lang') as HTMLInputElement).value,
             'to_lang': (document.querySelector('#to_lang') as HTMLInputElement).value,
-            'word': (document.querySelector('#word') as HTMLInputElement).value.replace(' ', '%')
+            'word': (document.querySelector('#word') as HTMLInputElement).value
         }
-        getTranslation(form_translation)
+        getTranslation(form_translation);
     });
+
+    const modal_btn: HTMLButtonElement = document.querySelector('button#modal-btn') as HTMLButtonElement;
+
+    modal_btn.onclick = () => closeModal();
 })();

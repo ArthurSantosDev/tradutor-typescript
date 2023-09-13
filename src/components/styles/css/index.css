@@ -107,12 +107,13 @@
 .modal-alert {
   width: 400px;
   height: 250px;
+  transition: all 0.8s;
   z-index: 999;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   padding: 0.5em;
@@ -131,6 +132,7 @@
   width: 200px;
   padding: 5px;
   background-color: #b9b8b8;
+  cursor: pointer;
 }
 
 body.dark-mode .modal-alert {
@@ -315,6 +317,30 @@ main {
 .translation-section h1 {
   font-size: 2.6em;
   padding: 3px;
+}
+.translation-section article {
+  margin-top: 3em;
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+table {
+  margin-top: 2em;
+  padding-left: 1em;
+  border-left: 2px solid #808080;
+}
+
+tr {
+  font-size: 4em;
+  display: flex;
+  gap: 0.8em;
+}
+
+td {
+  text-align: center;
+  font-weight: bold;
 }
 
 /* Inputs */

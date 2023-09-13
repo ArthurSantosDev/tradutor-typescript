@@ -4,6 +4,8 @@
     width: 400px;
     height: 250px;
 
+    transition: all .8s;
+
     z-index: 999;
 
     position: absolute;
@@ -11,7 +13,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
 
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
 
@@ -32,6 +34,7 @@
     width: 200px;
     padding: 5px;
     background-color: #b9b8b8;
+    cursor: pointer;
 }
   
 body.dark-mode .modal-alert {

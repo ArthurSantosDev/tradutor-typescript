@@ -1,4 +1,4 @@
-import { getTranslation, loadLocalStorage, setBodyTheme } from "./models/models.js";
+import { closeModal, getTranslation, loadLocalStorage, setBodyTheme } from "./models/models.js";
 (() => {
     window.addEventListener('DOMContentLoaded', loadLocalStorage);
     const toggle_switch = document.querySelector('.toggle');
@@ -8,9 +8,10 @@ import { getTranslation, loadLocalStorage, setBodyTheme } from "./models/models.
         const form_translation = {
             'from_lang': document.querySelector('#from_lang').value,
             'to_lang': document.querySelector('#to_lang').value,
-            'word': document.querySelector('#word').value.replace(' ', '%')
+            'word': document.querySelector('#word').value
         };
-        alert(form_translation.word)
         getTranslation(form_translation);
     });
+    const modal_btn = document.querySelector('button#modal-btn');
+    modal_btn.onclick = () => closeModal();
 })();

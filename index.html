@@ -15,7 +15,7 @@
         referrerpolicy="no-referrer" 
     />
 
-    <title>Personalização de Interface</title>
+    <title>Tradutor de Idiomas</title>
 </head>
 <body>
     <header class="page-header">
@@ -104,8 +104,21 @@
                     </div>
                 </form>
             </div>
+
+            <article>
+                <h3>Tradução</h3>
+                <div class="div-translation">
+                    <!--Tradução aqui-->
+                </div>
+            </article>
         </section>
     </main>
+
+    <div class="modal-alert">
+        <h2>Erro!</h2>
+        <div id="modal-warning"></div>
+        <button id="modal-btn" type="button" onclick="closeModal();">Ok</button>
+    </div>
     
     <!--Scripts-->
     <script type="module" src="./src/components/scripts/js/index.js"></script>
