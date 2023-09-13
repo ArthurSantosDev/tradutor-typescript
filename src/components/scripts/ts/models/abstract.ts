@@ -1,4 +1,5 @@
-export type Theme = {
-    'light-mode': () => void;
-    'dark-mode': () => void;
-}
+export type Translation = {
+    'from_lang': string;
+    'to_lang': string;
+    'word': string;
+};
