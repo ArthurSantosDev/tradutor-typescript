@@ -3,7 +3,7 @@ import { Translation } from "./abstract";
 export function setBodyTheme (): void {
     const body: HTMLElement = document.body;
 
-    let theme;
+    let theme: any;
 
     if (body.classList.contains('dark-mode')) {
         body.classList.remove('dark-mode');

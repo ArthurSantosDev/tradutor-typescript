@@ -360,9 +360,14 @@ label {
   gap: 1em;
 }
 
-input {
+input, textarea {
   background: none;
   padding: 5px;
+}
+
+textarea {
+  border: 2px solid #808080;
+  border-radius: 5px;
 }
 
 input[type=text] {
@@ -371,6 +376,7 @@ input[type=text] {
 
 input[type=button] {
   border: 2px solid #808080;
+  width: 340px;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.8s;
