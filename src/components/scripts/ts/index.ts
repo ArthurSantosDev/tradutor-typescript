@@ -1,5 +1,5 @@
 import { Translation } from "./models/abstract";
-import { closeModal, getTranslation, loadLocalStorage, setBodyTheme } from "./models/models";
+import { clearHistory, closeModal, getTranslation, loadLocalStorage, setBodyTheme } from "./models/models";
 
 (() => {
     window.addEventListener('DOMContentLoaded', loadLocalStorage);
@@ -23,4 +23,8 @@ import { closeModal, getTranslation, loadLocalStorage, setBodyTheme } from "./mo
     const modal_btn: HTMLButtonElement = document.querySelector('button#modal-btn') as HTMLButtonElement;
 
     modal_btn.onclick = () => closeModal();
+
+    const clear_history_btn: HTMLButtonElement = document.querySelector('#clear-history') as HTMLButtonElement;
+
+    clear_history_btn.onclick = () => clearHistory();
 })();

@@ -25,6 +25,11 @@ export function setBodyTheme() {
         theme = localStorage.setItem('theme', 'dark-mode');
     }
 }
+export function clearHistory() {
+    const div_history = document.querySelector('.history');
+    localStorage.clear();
+    div_history.innerHTML = '';
+}
 /**
  * Função que carrega os dados do LocalStorage na página
 */
@@ -43,6 +48,12 @@ export function loadLocalStorage() {
         history_section.innerHTML += `<div>${array_words[word]}</div>`;
     }
 }
+/**
+ * Função que adiciona a palavra buscada pelo usuário no
+ * LocalStorage do navegador
+ *
+ * @param word Palavras a serem armazenadas
+*/
 function addToLocalStorage(word) {
     let words = localStorage.getItem('words_history')
         ? JSON.parse(localStorage.getItem('words_history') || '[]')

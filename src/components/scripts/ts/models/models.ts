@@ -22,10 +22,16 @@ export function setBodyTheme (): void {
     }
 }
 
+export function clearHistory (): void {
+    const div_history: HTMLDivElement = document.querySelector('.history') as HTMLDivElement;
+    localStorage.clear();
+    div_history.innerHTML = '';
+}
+
 /**
  * Função que carrega os dados do LocalStorage na página
 */
-export function loadLocalStorage() {
+export function loadLocalStorage(): void {
     const every_selector: HTMLElement = document.querySelector('body *') as HTMLElement;
     const toggle_switch: HTMLInputElement = document.querySelector('.toggle') as HTMLInputElement;
 
@@ -40,7 +46,7 @@ export function loadLocalStorage() {
     
     const array_words: string[] = JSON.parse(words_history);
 
-    const history_section: HTMLElement = document.querySelector('.history') as HTMLElement;
+    const history_section: HTMLDivElement = document.querySelector('.history') as HTMLDivElement;
 
     history_section.innerHTML = '';
 
@@ -49,7 +55,13 @@ export function loadLocalStorage() {
     }
 }
 
-function addToLocalStorage(word: string) {
+/** 
+ * Função que adiciona a palavra buscada pelo usuário no
+ * LocalStorage do navegador
+ * 
+ * @param word Palavras a serem armazenadas
+*/
+function addToLocalStorage(word: string): void {
     let words: string[] = localStorage.getItem('words_history')
         ? JSON.parse(localStorage.getItem('words_history') || '[]')
         : [];

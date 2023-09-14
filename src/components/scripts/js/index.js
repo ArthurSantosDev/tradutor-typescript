@@ -1,4 +1,4 @@
-import { closeModal, getTranslation, loadLocalStorage, setBodyTheme } from "./models/models.js";
+import { clearHistory, closeModal, getTranslation, loadLocalStorage, setBodyTheme } from "./models/models.js";
 (() => {
     window.addEventListener('DOMContentLoaded', loadLocalStorage);
     const toggle_switch = document.querySelector('.toggle');
@@ -15,4 +15,6 @@ import { closeModal, getTranslation, loadLocalStorage, setBodyTheme } from "./mo
     });
     const modal_btn = document.querySelector('button#modal-btn');
     modal_btn.onclick = () => closeModal();
+    const clear_history_btn = document.querySelector('#clear-history');
+    clear_history_btn.onclick = () => clearHistory();
 })();
