@@ -9,7 +9,6 @@
 
 <p> Ou então, clonar este repositório para o seu ambiente local. </p>
 
-        Copy code
         git clone https://github.com/seu-usuario/tradutor-de-idiomas.git
         cd tradutor-de-idiomas
 
