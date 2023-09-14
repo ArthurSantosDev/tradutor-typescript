@@ -7,9 +7,11 @@ import { closeModal, getTranslation, loadLocalStorage, setBodyTheme } from "./mo
     const toggle_switch: HTMLInputElement = document.querySelector('.toggle') as HTMLInputElement;
     toggle_switch.addEventListener('change', setBodyTheme);
 
-    const translate_btn: HTMLElement = document.getElementById('translate') as HTMLElement;
+    const page_form: HTMLFormElement = document.querySelector('form') as HTMLFormElement;
 
-    translate_btn.addEventListener('click', () => {
+    page_form.addEventListener('submit', (ev: SubmitEvent) => {
+        ev.preventDefault();
+
         const form_translation: Translation = {
             'from_lang': (document.querySelector('#from_lang') as HTMLInputElement).value,
             'to_lang': (document.querySelector('#to_lang') as HTMLInputElement).value,

@@ -318,12 +318,38 @@ main {
   font-size: 2.6em;
   padding: 3px;
 }
-.translation-section article {
+.translation-section .section-info {
+  display: flex;
+  justify-content: space-between;
   margin-top: 3em;
+}
+@media screen and (max-width: 768px) {
+  .translation-section .section-info {
+    flex-direction: column;
+    gap: 1em;
+  }
+}
+
+article {
+  min-height: 200px;
 }
 
 h3 {
   font-size: 1.6em;
+}
+
+.words-history {
+  width: 300px;
+  min-height: 300px;
+  border-radius: 10px;
+  border: 2px solid #808080;
+  padding: 5px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.words-history div {
+  text-transform: capitalize;
 }
 
 table {
@@ -341,6 +367,10 @@ tr {
 td {
   text-align: center;
   font-weight: bold;
+}
+
+.lang-td {
+  width: 100%;
 }
 
 /* Inputs */
@@ -374,7 +404,7 @@ input[type=text] {
   border-bottom: 2px solid #808080;
 }
 
-input[type=button] {
+input[type=submit] {
   border: 2px solid #808080;
   width: 340px;
   border-radius: 8px;
@@ -382,7 +412,7 @@ input[type=button] {
   transition: background 0.8s;
   margin-top: 10px;
 }
-input[type=button]:hover {
+input[type=submit]:hover {
   background-color: #808080;
 }
 
