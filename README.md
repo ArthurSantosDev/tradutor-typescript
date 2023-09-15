@@ -9,7 +9,7 @@
 
 <p> Ou então, clonar este repositório para o seu ambiente local. </p>
 
-        git clone https://github.com/seu-usuario/tradutor-de-idiomas.git
+        git clone https://github.com/ArthurSantosDev/tradutor-de-idiomas.git
         cd tradutor-de-idiomas
 
 <p>Abra o arquivo index.html em seu navegador da web.</p>
